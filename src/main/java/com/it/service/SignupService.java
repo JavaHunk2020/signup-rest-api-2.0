@@ -39,7 +39,7 @@ public class SignupService {
 
 	public SignupDTO findByPid(int pid) {
 		java.util.Optional<Signup> optional= signupDao.findById(pid);
-		if(optional.isEmpty()) {
+		if(!optional.isPresent()) {
 			throw new ResourceNotFoundException("Signup","pid",pid);
 		}
 		SignupDTO signupDTO = new SignupDTO();
