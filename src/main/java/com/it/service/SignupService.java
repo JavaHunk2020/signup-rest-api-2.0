@@ -34,6 +34,8 @@ public class SignupService {
 	public void update(SignupDTO signupDTO) {
 		Signup signup = new Signup();
 		BeanUtils.copyProperties(signupDTO, signup);
+		Signup dbsignup=signupDao.findById(signupDTO.getPid()).get();
+		signup.setDoe(dbsignup.getDoe());
 		signupDao.save(signup);
 	}
 
